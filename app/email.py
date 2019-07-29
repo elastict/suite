@@ -81,7 +81,10 @@ def _send_email(self, to, subject, html_body):
                 'type': 'to'
             }]
         }
-        client.messages.send(message=message, async=False)
+
+        current_app.logger.info(message)
+
+        # client.messages.send(message=message, async=False)
 
     except mandrill.Error, e:
         # Mandrill errors are thrown as exceptions
